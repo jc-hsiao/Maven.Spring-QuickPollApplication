@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Option {
     @Id
-    @GeneratedValue( strategy = GenerationType.AUTO )
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column(name = "OPTION_ID")
     Long id;
     @Column(name = "OPTION_VALUE")

@@ -478,14 +478,14 @@ Create a void method in `PollController` called `verifyPoll` that checks if a sp
 
 ## Part 5.3 - Create custom Error Responses
 
-Spring provides some built-in exception handling and error response, but we'll customize it a bit here. Create an `ErrorDetail` class in a new `io.zipcoder.tc_spring_poll_application.dto.error` package to hold relevant information any time an error occurs.
+Spring provides some built-in exception handling and io.zipcoder.tc_spring_poll_application.error response, but we'll customize it a bit here. Create an `ErrorDetail` class in a new `io.zipcoder.tc_spring_poll_application.dto.io.zipcoder.tc_spring_poll_application.error` package to hold relevant information any time an io.zipcoder.tc_spring_poll_application.error occurs.
 
 Fields (Don't forget to provide getters and setters):
 
-- `String title`: a brief title of the error condition, eg: "Validation Failure" or "Internal Server Error"
-- `int status`: the HTTP status code for the current request; redundant but useful for client-side error handling
-- `String detail`: A short, human-readable description of the error that may be presented to a user
-- `long timeStamp`: the time in milliseconds when the error occurred
+- `String title`: a brief title of the io.zipcoder.tc_spring_poll_application.error condition, eg: "Validation Failure" or "Internal Server Error"
+- `int status`: the HTTP status code for the current request; redundant but useful for client-side io.zipcoder.tc_spring_poll_application.error handling
+- `String detail`: A short, human-readable description of the io.zipcoder.tc_spring_poll_application.error that may be presented to a user
+- `long timeStamp`: the time in milliseconds when the io.zipcoder.tc_spring_poll_application.error occurred
 - `String developerMessage`: detailed information such as exception class name or a stack trace useful for developers to debug
 
 
@@ -517,7 +517,7 @@ Now it's time to make sure that all objects persisted to the database actually c
 
 ## Part 5.5 - Customizing validation errors
 
-In order to customize validation errors we'll need a class for error information. Create a `ValidationError` class in `io.zipcoder.tc_spring_poll_application.dto.error` with the following fields and appropriate getters and setters:
+In order to customize validation errors we'll need a class for io.zipcoder.tc_spring_poll_application.error information. Create a `ValidationError` class in `io.zipcoder.tc_spring_poll_application.dto.io.zipcoder.tc_spring_poll_application.error` with the following fields and appropriate getters and setters:
 
 - `String code`
 - `String message`
@@ -525,7 +525,7 @@ In order to customize validation errors we'll need a class for error information
 We also need a new field in the `ErrorDetail` class to hold errors. There may be multiple validation errors associated with a request, sometimes more than one of the same type, so this field will be a collection, specifically a `Map<String, List<ValidationError>> errors` field.
 
 
-## Part 5.6 - Create a validation error handler
+## Part 5.6 - Create a validation io.zipcoder.tc_spring_poll_application.error handler
 
 - add below handler to `RestExceptionHandler`
 
@@ -540,8 +540,8 @@ In this handler we need to do the following:
 
 - Create the ErrorDetail object (similar to before)
 - Get the list of field validation errors
-- For each field error, add it to the appropriate list in the ErrorDetail (see below)
-- Return a `ResponseEntity` containing the error detail and the appropriate HTTP status code (`400 Bad Request`)
+- For each field io.zipcoder.tc_spring_poll_application.error, add it to the appropriate list in the ErrorDetail (see below)
+- Return a `ResponseEntity` containing the io.zipcoder.tc_spring_poll_application.error detail and the appropriate HTTP status code (`400 Bad Request`)
 
 ```java
 List<FieldError> fieldErrors =  manve.getBindingResult().getFieldErrors();
@@ -563,7 +563,7 @@ for(FieldError fe : fieldErrors) {
 
 Commonly used strings in your Java program can be removed from the source code and placed in a separate file. This is called externalizing, and is useful for allowing changes to text displayed without impacting actual program logic. One example of where this is done is in internationalization, the practice of providing multilingual support in an application, allowing users to use an application in their native language.
 
-There are two steps needed here to externalize and standardize the validation error messages:
+There are two steps needed here to externalize and standardize the validation io.zipcoder.tc_spring_poll_application.error messages:
 
 - Create a `messages.properties` file in the `src/main/resources` directory with the given properties below
   - `messages.properties` is a key-value file stored in plain text. Your IDE may have a table-based view or show the contents as text
